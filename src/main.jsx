@@ -7,6 +7,7 @@ import BrowseBooks from "./components/BrowseBooks.jsx";
 import AddBooks from "./components/AddBooks.jsx";
 import Home from "./components/Home.jsx";
 import Error from "./components/Error.jsx";
+import BookDetails from "./components/BookDetails.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/browse-books",
         element: <BrowseBooks />,
+      },
+      {
+        path: "/book-details/:id",
+        element: <BookDetails />,
       },
       {
         path: "/add-books",

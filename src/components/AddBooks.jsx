@@ -1,13 +1,20 @@
 import { useState } from "react";
-import { books } from "../utils/bookData";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addBook } from "../utils/booksSlice";
 
-function AddBooks({onBookAdded}) {
+function AddBooks() {
   const [formData, setFormData] = useState({
     image: "",
     title: "",
     author: "",
+    category: "",
     description: "",
+    rating: "",
   });
+  const [errors, setErrors] = useState({});
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -16,18 +23,45 @@ function AddBooks({onBookAdded}) {
     });
   };
 
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.image.trim()) {
+      newErrors.image = "Image URL is required";
+    }
+    if (!formData.title.trim()) {
+      newErrors.title = "Title is required";
+    }
+    if (!formData.author.trim()) {
+      newErrors.author = "Author is required";
+    }
+    if (!formData.rating.trim()) {
+      newErrors.rating = "Rating is required";
+    }
+    if (!formData.category.trim()) {
+      newErrors.category = "Category is required";
+    }
+    if (!formData.description.trim()) {
+      newErrors.description = "Description is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newBook = { ...formData };
-    books.push(newBook);
-    onBookAdded(newBook);
-    setFormData({ image: "", title: "", author: "", description: "" });
+    if (validate()) {
+      dispatch(addBook(formData));
+      navigate("/browse-books");
+    }
   };
+
+  // console.log(formData);
 
   return (
     <>
-      <div className="bg-zinc-600 text-white h-auto w-[40%] m-auto mt-10 rounded-xl shadow-2xl">
-        <h1 className="font-bold text-3xl text-center mb-5 p-3 text-shadow-lg">
+      <div className="bg-zinc-600 text-white h-auto w-[40%] m-auto mt-2 rounded-xl shadow-2xl">
+        <h1 className="font-bold text-3xl text-center mb-1 p-3 text-shadow-lg">
           Add a New Book Details
         </h1>
         <form
@@ -41,38 +75,77 @@ function AddBooks({onBookAdded}) {
             type="text"
             value={formData.image}
             onChange={handleChange}
-            className=" w-full bg-white rounded-md p-1 mb-5 text-black"
+            className=" w-full bg-white rounded-md p-1 mb-3 text-black"
             name="image"
             placeholder="Image Url"
           />
-          <label htmlFor="">Book Title</label>
+          {errors.image && (
+            <p className="text-red-400 text-sm">{errors.image}</p>
+          )}
+          <label htmlFor="">Book Title:</label>
           <input
             type="text"
             value={formData.title}
             onChange={handleChange}
-            className=" w-full bg-white rounded-md p-1 mb-5 text-black"
+            className=" w-full bg-white rounded-md p-1 mb-3 text-black"
             name="title"
             placeholder="Enter Book Title"
           />
-          <label htmlFor="">Book Author</label>
+          {errors.title && (
+            <p className="text-red-400 text-sm">{errors.title}</p>
+          )}
+
+          <label htmlFor="">Book Author:</label>
           <input
             type="text"
             value={formData.author}
             onChange={handleChange}
-            className=" w-full bg-white rounded-md p-1 mb-5 text-black"
+            className=" w-full bg-white rounded-md p-1 mb-3 text-black"
             name="author"
             placeholder="Enter Book Author"
           />
-          <label htmlFor="">Book Description</label>
+          {errors.author && (
+            <p className="text-red-400 text-sm">{errors.author}</p>
+          )}
+          <label htmlFor="">Book Rating:</label>
+          <input
+            type="text"
+            value={formData.rating}
+            onChange={handleChange}
+            className=" w-full bg-white rounded-md p-1 mb-3 text-black"
+            name="rating"
+            placeholder="Enter Book Rating"
+          />
+          {errors.rating && (
+            <p className="text-red-400 text-sm">{errors.rating}</p>
+          )}
+          <label htmlFor="">Book Category:</label>
+          <input
+            type="text"
+            value={formData.category}
+            onChange={handleChange}
+            className=" w-full bg-white rounded-md p-1 mb-3 text-black"
+            name="category"
+            placeholder="Enter Book Category"
+          />
+          {errors.category && (
+            <p className="text-red-400 text-sm">{errors.category}</p>
+          )}
+
+          <label htmlFor="">Book Description:</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className=" w-full bg-white rounded-md p-1 mb-5 text-black"
+            className=" w-full bg-white rounded-md p-1 mb-3 text-black"
             cols="30"
-            rows="8"
+            rows="3"
             placeholder="Enter Book Description"
           ></textarea>
+          {errors.description && (
+            <p className="text-red-400 text-sm">{errors.description}</p>
+          )}
+
           <button
             type="submit"
             className="w-full bg-blue-500 font-bold rounded-lg p-1 mb-5 hover:bg-blue-900"
