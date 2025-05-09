@@ -120,14 +120,19 @@ function AddBooks() {
             <p className="text-red-400 text-sm">{errors.rating}</p>
           )}
           <label htmlFor="">Book Category:</label>
-          <input
-            type="text"
+          <select
             value={formData.category}
             onChange={handleChange}
             className=" w-full bg-white rounded-md p-1 mb-3 text-black"
             name="category"
-            placeholder="Enter Book Category"
-          />
+          >
+          <option value="">Select a Category</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
+          <option value="sci-fiction">Sci-Fiction</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="romance">Romance</option>
+          </select>
           {errors.category && (
             <p className="text-red-400 text-sm">{errors.category}</p>
           )}

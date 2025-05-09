@@ -8,6 +8,7 @@ import AddBooks from "./components/AddBooks.jsx";
 import Home from "./components/Home.jsx";
 import Error from "./components/Error.jsx";
 import BookDetails from "./components/BookDetails.jsx";
+import BooksByCategory from "./components/BooksByCategory.jsx";
 
 const appRouter = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/add-books",
         element: <AddBooks />,
+      },
+            {
+        path: "/books/:category",
+        element: <BooksByCategory />,
       },
     ],
     errorElement: <Error />,

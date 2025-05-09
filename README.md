@@ -1,12 +1,52 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# React Book Library
 
-Currently, two official plugins are available:
+A simple and elegant Book Library web application built with React, Redux Toolkit, React Router, and Tailwind CSS. Users can browse, search, filter, add, and view detailed information about books.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Browse and Search Books** by title or author.
+- **Book Details Page** with complete info on each book.
+- **Add Books Form** to store new books with validation.
+- **LocalStorage Integration** for saving user-added books.
+- **Dynamic Routing** using React Router.
+- **Book Categories** (Fiction, Non-Fiction, Fantasy, etc.)
+- **Hardcoded Popular Books** with initial display.
+- Fully responsive using **Tailwind CSS**.
+
+---
+
+## Tech Stack
+
+- [React](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [React Router](https://reactrouter.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Vite](https://vitejs.dev/) (for fast development)
+- LocalStorage API (for persistence)
+
+---
+
+## How to Run Locally
+
+## Clone the repo:
+
+Step 1: git clone https://github.com/shashikant021/Online-Library-System
+Step 2: cd your-repo-name
+
+## Install dependencies:
+
+Step 3: npm install
+
+## Start the development server:
+
+Step 4: npm run dev
+
+## Open in browser:
+
+Step 5: http://localhost:5173
+
+                             *-----------------------------------------------------------------*

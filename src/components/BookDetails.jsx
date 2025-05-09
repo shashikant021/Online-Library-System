@@ -17,14 +17,18 @@ function BookDetails() {
   }
   return (
     <>
-    <h1 className="text-center m-5 p-5 text-2xl underline "><em>{`Book Details with id: ${id}`}</em></h1>
+      <h1 className="text-center m-5 p-2 text-2xl underline ">
+        <em>{`Book Details with id: ${id}`}</em>
+      </h1>
       <div className="m-10 bg-zinc-100 text-black rounded-xl shadow-xl p-6 flex">
-        <img
-          src={book.image}
-          alt={book.title}
-          className="w-auto h-auto object-cover rounded mb-4"
-        />
-        <div className="p-10">
+        <div className=" w-[30%] flex justify-center items-center ">
+          <img
+            src={book.image}
+            alt={book.title}
+            className=" w-80 h-96 object-cover rounded mb-4"
+          />
+        </div>
+        <div className="p-10 w-[70%]">
           <h2 className="text-3xl font-bold mb-4 text-center">{book.title}</h2>
           <p className="mb-2 text-lg">
             <strong>Author:</strong> {book.author}
